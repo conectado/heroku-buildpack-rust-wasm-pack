@@ -52,9 +52,13 @@ else
     rm rustup.sh
     echo "-----> Installing wasm target"
     rustup target add wasm32-unknown-unknown
-    echo "-----> Installing wasm-pack"
-    cargo install wasm-pack
+    echo "-----> Installing cargo-update"
+    cargo install cargo-update || true
 fi
+
+echo "-----> Updating wasm-pack and wasm-bindgen"
+cargo install-update -i wasm-pack wasm-bindgen
+
 if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
   echo "failed: Cannot find Rust binaries at $CARGO_HOME"
   exit 1
