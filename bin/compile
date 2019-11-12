@@ -52,9 +52,10 @@ else
     rm rustup.sh
     echo "-----> Installing wasm target"
     rustup target add wasm32-unknown-unknown
-    echo "-----> Installing cargo-update"
-    cargo install cargo-update || true
 fi
+
+echo "-----> Installing cargo-update"
+cargo install cargo-update || true
 
 echo "-----> Updating wasm-pack and wasm-bindgen"
 cargo install-update -i wasm-pack wasm-bindgen
