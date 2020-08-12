@@ -109,9 +109,10 @@ else
     echo "-----> Using rustup to install Rust channel $VERSION"
     ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
-    echo "-----> Installing wasm target"
-    rustup target add wasm32-unknown-unknown
 fi
+
+echo "-----> Installing wasm target"
+rustup target add wasm32-unknown-unknown
 
 echo "-----> Installing cargo-update"
 cargo install cargo-update || true
