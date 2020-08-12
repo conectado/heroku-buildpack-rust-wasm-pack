@@ -1,4 +1,10 @@
 #!/bin/sh
 
-echo "wasm-pack"
+if [ -f "$1/RustConfig" ] || [ -f "$1/rust-toolchain" ] || [ -f "$1/Cargo.toml" ]; then
+    echo "Rust & wasm-pack"
+    exit 0
+else
+    exit 1
+fi
+
 exit 0
