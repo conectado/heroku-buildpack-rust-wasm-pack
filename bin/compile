@@ -21,19 +21,14 @@ RUST_SKIP_BUILD=0
 # If your Rust code is not at the root directory of the repository, specify a
 # `BUILD_PATH` to the correct directory in the `RustConfig`
 BUILD_PATH=""
-# Set this to "1" in `RustConfig` to install diesel at build time and copy it
-# into the target directory, next to your app binary. This makes it easy to
-# run migrations by adding a release step to your Procfile:
-# `release: ./target/release/diesel migration run`
-RUST_INSTALL_DIESEL=0
-# These flags are passed to `cargo install diesel`, e.g. '--no-default-features --features postgres'
-DIESEL_FLAGS=""
 # Default build flags to pass to `cargo build`.
 RUST_CARGO_BUILD_FLAGS="--release"
 
 # Load our toolchain configuration, if any was specified.
 if [ -f "$BUILD_DIR/rust-toolchain" ]; then
     VERSION="$(cat "$BUILD_DIR/rust-toolchain")"
+else
+    VERSION="stable"
 fi
 
 # Load our configuration variables, if any were specified.
