@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f "$1/RustConfig" ] || [ -f "$1/rust-toolchain" ] || [ -f "$1/Cargo.toml" ]; then
+if [ -f "$1/RustConfig" ] || [ -f "$1/rust-toolchain" ] || [ -f "$1/Cargo.toml" ] || stat -t $1/**/Cargo.toml >/dev/null 2>&1 ; then
     echo "Rust & wasm-pack"
     exit 0
 else
